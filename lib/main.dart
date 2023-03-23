@@ -2,13 +2,18 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ia_proyectorn/firebase_options.dart';
+import 'package:ia_proyectorn/service/upload_image.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //Obtener una lista de las cámaras disponibles en el dispositivo.
   final cameras = await availableCameras();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final firstCamera = cameras.first;
 
@@ -132,6 +137,26 @@ class DisplayPictureScreen extends StatelessWidget {
               style: TextStyle(fontSize: 25, fontFamily: 'Cursiva'))),
       // La imagen se almacena como un archivo en el dispositivo. Use el constructor `Image.file con la ruta dada para mostrar la imagen.
       body: Image.file(File(imagePath)),
+      // ignore: unnecessary_new
+      floatingActionButton: new FloatingActionButton(
+        onPressed: () async {
+          if (File(imagePath) == null) {
+            return;
+          }
+          final uploaded = await uploadImage(File(imagePath));
+
+          if (uploaded) {
+            // ignore: use_build_context_synchronously
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Imagen Correctamente Subida')));
+          } else {
+            // ignore: use_build_context_synchronously
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Error al Subir la Imagen')));
+          }
+        },
+        child: const Text('Subir'),
+      ),
     );
   }
 }
