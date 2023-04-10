@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "955275944362",
+    "project_id": "clasificador-figuras",
+    "storage_bucket": "clasificador-figuras.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955275944362:android:0c9c366c0031a72e0acbd3",
+        "android_client_info": {
+          "package_name": "com.example.ia_proyectorn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955275944362-i3cukou9g5oddt1852j3hrbj4c32e7it.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBuQT_4SWhK41DiY-d543VdU0WHurcIeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955275944362-i3cukou9g5oddt1852j3hrbj4c32e7it.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
